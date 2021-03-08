@@ -1,7 +1,7 @@
 {
   "name": "tasklist",
   "version": "0.1.0",
-  "homepage":"https://sarabdeep93.github.io/ToDoApp",
+  "homepage":"https://sarabdeep93.github.io/To-Do-App-React-MVC",
   "private": true,
   "dependencies": {
     "axios": "^0.19.2",
