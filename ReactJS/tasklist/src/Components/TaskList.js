@@ -17,13 +17,7 @@ class TaskList extends Component {
         
         this.state = {
             isUpdate : false,
-            items: [
-                {
-                    text: '',
-                    key: null,
-                    isCompleted :false
-                }
-            ]
+            items: []
         }
     }
     
@@ -49,7 +43,6 @@ class TaskList extends Component {
     }
 
    bindData(dataArr) {
-       debugger;
         try {
             if (dataArr.length > 0) {
                 var tasksArr = dataArr.map((task, i) => {
@@ -190,10 +183,6 @@ class TaskList extends Component {
                 )
                 .then(response => {
                     if (response.statusText.toLocaleLowerCase() === 'ok') {
-                        /*var itemtoMark = this.state.items.filter(function (item) {
-                            return (item.key === key);
-                        });*/
-                        
                         this.setState({
                             items: modifiedList
                         });
@@ -214,19 +203,19 @@ class TaskList extends Component {
         return (
             <div className="todoListMain">
                 <div className="header">
-                    <form className={!this.state.isUpdate ? "taskForm formCenter showForm": "taskForm formCenter hideForm"} onSubmit={this.addItem}>
+                    <h1 className="heading">ToDo App</h1>
+                    <form className={!this.state.isUpdate ? "taskForm formCenter showForm" : "taskForm formCenter hideForm"} onSubmit={this.addItem}>
                         <input type="text" ref={(txtTask) => this.txtTasks = txtTask} placeholder={this.props.txtAddPlaceHolder} />
                         <button type="submit">{this.props.bntAddText}</button>
                     </form>
-                    <form className={this.state.isUpdate ? "taskForm formCenter showForm": "taskForm formCenter hideForm"} onSubmit={this.editTask}>
+                    <form className={this.state.isUpdate ? "taskForm formCenter showForm" : "taskForm formCenter hideForm"} onSubmit={this.editTask}>
                         <input type="text" ref={(txtEditTask) => this.txtEditTask = txtEditTask} placeholder={this.props.txtUpdatePlaceHolder} />
                         <button type="submit">{this.props.bntUpdateText}</button>
                     </form>
-                    {
-                        this.state.items.length > 0 && this.state.items[0].key !== null &&
-                    <TaskItems entries={this.state.items} deleteData={this.deleteItem} editTask={this.editItem} markComplete={this.markItemComplete}/>
-                    }
-                    </div>
+                    
+                        <TaskItems entries={this.state.items} deleteData={this.deleteItem} editTask={this.editItem} markComplete={this.markItemComplete} />
+                    
+                </div>
             </div>
 
         );
