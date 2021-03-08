@@ -98,3 +98,9 @@
     float: right;
     margin: -15px 0px;
   }
+
+  .heading{
+    background-color: #66CCFF;
+    text-align: center;
+    color: #ffffff;
+  }
